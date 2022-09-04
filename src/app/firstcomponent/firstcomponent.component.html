@@ -1,0 +1,11 @@
+<p>firstcomponent works!</p>
+
+<a [routerLink]="['/second']" routerLinkActive="router-link-active">Second Component</a>
+<router-outlet></router-outlet>
+
+<nav>
+    <ul>
+        <li><a [routerLink]="['firstA']" routerLinkActive="route-link-active">First Child A </a></li>
+        <li><a [routerLink]="['firstB']" routerLinkActive="router-link-active">First Child B</a></li>
+    </ul>
+</nav>

@@ -1,0 +1,63 @@
+<p>secondcomponent works!</p>
+
+<a [routerLink]="['/']" routerLinkActive="router-link-active">Frist Component</a>
+<br><br>
+
+<h1>Reactive Form</h1>
+<label for="color">Color
+    <input type="text" [formControl]="color">
+</label>
+
+<p>
+    {{ color.value }}
+</p>
+
+<br><br>
+<h1>Template-Driven Form</h1>
+
+<label for="name">Name
+    <input type="text" [(ngModel)]="name">
+</label>
+
+<p>
+    {{ name }}
+</p>
+<br><hr>
+
+<h1>Reactive form</h1>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <label for="username">Username:
+    <input type="text" formControlName="username" required maxlength="40" minlength="6">
+    <div *ngIf="username?.invalid && (username?.dirty || username?.touched)">
+      <div *ngIf="username?.hasError('required')">
+        username is required
+      </div>
+      <div *ngIf="username?.hasError('minlength')">
+        use at least 6 character
+      </div>
+      <div *ngIf="username?.hasError('maxlength')">
+        use at most 40 character
+      </div>
+    </div>
+  </label>
+  <br><br>
+  <label for="password">Password:
+  <input type="password" formControlName="password" required minlength="8" maxlength="100">
+    <div *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+      <div *ngIf="password?.hasError('required')">
+        password is required
+      </div>
+      <div *ngIf="password?.hasError('minlength')">
+        use at least 8 character
+      </div>
+      <div *ngIf="password?.hasError('maxlength')">
+        use at most 100 character
+      </div>
+    </div>
+  </label><br><br>
+  <button type="submit">Submit</button>
+</form>
+
+<p>
+  {{ myForm.value  | json }}
+</p>
